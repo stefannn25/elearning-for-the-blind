@@ -3,9 +3,7 @@
   --bg-card: #1e1e1e;
   --text-light: #f5f5f5;
   --accent: #88e785ff;
-  /* cyan accent */
   --accent-2: #ffcc00;
-  /* yellow accent */
 }
 
 body {
@@ -51,6 +49,7 @@ h6 {
   background: #022b00ff;
 }
 
+
 .content-card {
   background: var(--bg-card);
   border-radius: 16px;
@@ -76,7 +75,6 @@ textarea::placeholder {
   color: #aaa !important;
 }
 
-
 .user-bubble {
   background: var(--accent);
   color: #111;
@@ -84,6 +82,8 @@ textarea::placeholder {
   display: inline-block;
   padding: .6rem 1rem;
   max-width: 70%;
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
 }
 
 .bot-bubble {
@@ -93,7 +93,25 @@ textarea::placeholder {
   display: inline-block;
   padding: .6rem 1rem;
   max-width: 70%;
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
 }
+
+.bot-bubble .MathJax {
+    white-space: normal !important;
+    overflow-x: visible !important; 
+    max-width: 100%;
+    display: inline-block; 
+}
+
+
+.bot-bubble mjx-container[display="true"] {
+    margin: 1em 0;
+    overflow-x: auto; 
+    white-space: normal !important;
+    max-width: 100%;
+}
+
 
 .typing-dots span {
   display: inline-block;
@@ -118,6 +136,19 @@ textarea::placeholder {
 
   40% {
     opacity: 1;
+  }
+}
+
+.chat-message {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInMessage 0.4s ease-out forwards;
+}
+
+@keyframes fadeInMessage {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -157,10 +188,20 @@ textarea::placeholder {
   font-size: 1.2rem;
 }
 
+.nav-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-dark);
+  padding-top: 10px;
+  border-bottom: 1px solid #444;
+}
+
 .nav-tabs .nav-link {
   color: #aaa;
   font-weight: 600;
   border-radius: 12px 12px 0 0;
+  border: none;
 }
 
 .nav-tabs .nav-link.active {
@@ -210,7 +251,6 @@ textarea::placeholder {
   transition: background-color 0.3s ease;
 }
 
-/* Pulse effect when active */
 #micButton.recording {
   animation: pulse 1s infinite;
 }
@@ -246,7 +286,6 @@ textarea::placeholder {
 
 #speakerButton i {
   font-size: 3.5rem;
-  /* big speaker icon */
 }
 
 .login-body {
@@ -353,7 +392,6 @@ textarea::placeholder {
   z-index: 100;
 }
 
-/* --- Transparent Sidebar Buttons --- */
 .nav-btn {
   display: block !important;
   background: transparent !important;
@@ -369,7 +407,6 @@ textarea::placeholder {
 
 .nav-btn:hover {
   background: rgba(255, 255, 255, 0.1) !important;
-  /* subtle hover glow */
   color: var(--accent) !important;
   transform: translateY(-2px);
   text-decoration: none !important;
@@ -377,39 +414,21 @@ textarea::placeholder {
 
 .nav-btn.active {
   background: rgba(99, 99, 99, 0.1) !important;
-  /* highlight active page */
   color: var(--accent) !important;
   text-decoration: none !important;
 }
 
-/* ==================================================================
-  Chat & Accessibility Styles 
-  (This replaces the old #chatArea and #sendButton rules)
-================================================================== 
-*/
-
-/* 1. New container to control height and layout */
 .chat-container {
   display: flex;
   flex-direction: column;
-  /* Set height to a large portion of the viewport height */
   height: 75vh;
 }
 
-/* 2. Style the message area (this is the div with class="chat-messages") */
 .chat-messages {
   flex-grow: 1;
-  /* Makes it fill the available space */
   overflow-y: auto;
-  /* Adds scrollbar when needed */
-
-  /* Readability Tweaks */
   font-size: 1.2rem;
-  /* Increases base font size (~19px) */
   line-height: 1.6;
-  /* Increases space between lines */
-
-  /* Merged from your original #chatArea style */
   padding: 1.2rem;
   scroll-behavior: smooth;
   background-color: var(--bg-card);
@@ -420,33 +439,22 @@ textarea::placeholder {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* 3. Make the text input larger */
-/* Targets the <input> with id="userInput" */
 #userInput.form-control {
   font-size: 1.2rem;
-  /* Match the chat area font size */
   padding: 0.75rem 1rem;
-  /* Makes the input box taller */
   height: auto;
-  /* Ensures a consistent border radius */
   border-radius: 12px !important;
 }
 
-/* 4. Make the send button taller to match */
-/* Targets the <button> with id="sendButton" */
 #sendButton.accent-btn {
-  /* Your existing styles */
   border-radius: 50px !important;
   font-weight: 600;
   margin-left: 10px;
-  /* New accessibility styles */
   font-size: 1.1rem;
   padding: 0.75rem 1.25rem;
-  /* Taller padding */
   height: auto;
 }
 
-/* 5. Fix scrollbar for new .chat-messages class */
 .chat-messages::-webkit-scrollbar {
   width: 8px;
 }
@@ -458,4 +466,89 @@ textarea::placeholder {
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
   background-color: #888;
+}
+
+#chatArea {
+  height: 65vh; 
+  overflow-y: auto; 
+  border-radius: 4px !important; 
+  border: 1px solid #333;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+#chatArea::-webkit-scrollbar { width: 10px; }
+#chatArea::-webkit-scrollbar-track { background: #1e1e1e; }
+#chatArea::-webkit-scrollbar-thumb { background: #444; border-radius: 0px; }
+#chatArea::-webkit-scrollbar-thumb:hover { background: #666; }
+
+.input-group {
+  background: var(--bg-dark);
+  padding-top: 5px;
+}
+
+#a11yToolbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+  background: rgba(30, 30, 30, 0.95);
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: 2px solid #555;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.high-contrast #a11yToolbar {
+  border: 2px solid #ffff00;
+  background: #000;
+}
+
+#a11yToolbar button {
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  transition: transform 0.2s;
+}
+
+#a11yToolbar button:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  #a11yToolbar {
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+    justify-content: center;
+    padding: 10px;
+  }
+  #a11yToolbar button span { display: none; }
+  #a11yToolbar button { padding: 10px 15px; border-radius: 50%; }
+}
+
+body.high-contrast { background-color: #000 !important; color: #ffff00 !important; }
+.high-contrast .card, .high-contrast .content-card, .high-contrast .sidebar, .high-contrast .navbar { 
+    background-color: #000 !important; border: 2px solid #ffff00 !important; 
+}
+.high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast h5, .high-contrast h6, 
+.high-contrast p, .high-contrast span, .high-contrast a, .high-contrast i, .high-contrast button { 
+    color: #ffff00 !important; 
+}
+.high-contrast .btn { 
+    background-color: #000 !important; border: 2px solid #ffff00 !important; color: #ffff00 !important; 
+}
+.high-contrast .btn:hover { 
+    background-color: #ffff00 !important; color: #000 !important; 
+}
+.high-contrast input, .high-contrast textarea { 
+    background-color: #000 !important; color: #ffff00 !important; border: 2px solid #ffff00 !important; 
 }

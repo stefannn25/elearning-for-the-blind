@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Choose Access | E-Learning Portal</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
   <style>
     :root {
       --bg-dark: #121212;
@@ -77,7 +75,7 @@
     }
 
     .card-option p {
-      color: #f1f1f1; /* brighter for better readability */
+      color: #f1f1f1; 
       font-size: 1.05rem;
       font-weight: 500;
     }
@@ -102,7 +100,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container container-choice fade-slide">
     <h2><i class="bi bi-mortarboard"></i> Welcome to E-Learning Portal for Visually Impaired Learners</h2>
@@ -134,6 +131,5 @@
       setTimeout(() => window.location.href = page, 600);
     }
   </script>
-
 </body>
 </html>

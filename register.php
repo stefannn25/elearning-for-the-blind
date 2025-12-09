@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Learning | Register</title>
-
-    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> 
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="dashboard_styles.css">
   </head>
 
@@ -24,8 +18,6 @@
           <h4 class="fw-bold mt-2">Create Your Account</h4>
           <p class="text-muted small">Join our e-learning platform today</p>
         </div>
-
-        <!-- Registration Form -->
         <form action="register_process.php" method="POST">
           <div class="mb-3">
             <label for="fullname" class="form-label fw-semibold">Full Name</label>

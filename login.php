@@ -89,10 +89,11 @@
     .form-control:focus {
       border-color: var(--accent-2);
       box-shadow: 0 0 15px rgba(255,204,0,0.3);
+      color: var(--accent-2);
     }
     .form-control::placeholder {
-      color: #ffffff !important;
-      opacity: 0.8 !important; /* Slight transparency for softer look */
+      color: var(--accent-2);
+      opacity: 0.8 !important;
     }
 
     .btn-login {
