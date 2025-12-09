@@ -5,10 +5,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     exit();
 }
 
-// Example subjects (replace with DB data later)
 $subjects = [
     ["name" => "Mathematics", "icon" => "bi-calculator", "desc" => "Improve problem-solving and analytical skills."],
-    ["name" => "Science", "icon" => "bi-flask", "desc" => "Explore experiments and natural phenomena."],
     ["name" => "English", "icon" => "bi-journal-bookmark", "desc" => "Enhance communication and writing skills."],
     ["name" => "Computer Studies", "icon" => "bi-laptop", "desc" => "Learn coding and digital literacy."],
 ];
@@ -44,8 +42,6 @@ $subjects = [
       transform: translateY(-4px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
-
-    /* Make card descriptions readable on dark mode */
     .content-card p {
       color: #b0b3b8 !important;
     }
