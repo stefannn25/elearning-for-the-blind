@@ -4,11 +4,8 @@
 header("Content-Type: application/json");
 
 $API_KEY = "AIzaSyD5_4EXAmIyYmhA07WRg7RauWfYBA5aE9k"; 
-$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $API_KEY;
-
-// Get JSON input from frontend
+$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" . $API_KEY;
 $input = json_decode(file_get_contents("php://input"), true);
-
 $prompt = $input["prompt"] ?? "Hello!";
 $data = [
     "contents" => [
@@ -21,7 +18,6 @@ $data = [
     ]
 ];
 
-// cURL request to Gemini
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $endpoint);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -58,7 +54,7 @@ if (isset($input['nlp_analysis'])) {
         ]]
     ];
 
-    $ch = curl_init($url);
+    $ch = curl_init($endpoint);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
@@ -67,10 +63,10 @@ if (isset($input['nlp_analysis'])) {
     curl_close($ch);
 
     echo $response;
-    exit;
+    exit; 
 }
 
 curl_close($ch);
-
-// Return Gemini’s response directly to frontend
 echo $response;
+
+?>
